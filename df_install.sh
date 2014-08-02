@@ -8,10 +8,17 @@ ERR="\033[31m[ERROR]:\033[0m"
 STY="\033[33m"
 ENC="\033[0m"
 ################
- 
+
+### This function get and return the latest version of Dwarf Fortress
+#TODO Create the function syntaw and use it
+# Get the content of the rss feed of the release canal and search for the line which contains the latest version
 string=$(curl http://www.bay12games.com/dwarves/dev_release.rss | sed -n '/DF [    0-9]./p')
+# Remove the part of the string before the version
 removePrefix=${string#*DF [0-9]*.}
+# Remove the part of the string after the version
 result=${removePrefix% R*}
+# Return the version
+#echo $result
 
 echo "\033[32m[START]\033[0m"
 
