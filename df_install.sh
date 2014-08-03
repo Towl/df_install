@@ -48,10 +48,8 @@ set_config_file () {
   #fi
 }
 
-### This function return the shortcut folder path from the config file (or ask for it)
-#TODO Finish this function 
+### This function return the shortcut folder path from the config file (or ask for it) 
 set_source_folder () {
-  echo "$INF Get the source folder path in the config."
   if [ -f $CONFIG ];then
     srcfolder_line=$(cat $CONFIG | grep "SRCFOLDER")
     SRCFOLDER="${srcfolder_line#*:}"
@@ -64,7 +62,7 @@ set_source_folder () {
 ### This function return the shortcut folder path from the config file (or ask for it)
 #TODO Finish this function
 set_shortcut_folder () {
-  echo "$INF The shortcut function is not ready yet."
+  echo "$WAR The shortcut function is not ready yet."
 }
 
 
@@ -86,6 +84,7 @@ get_latest_version () {
 }
 
 init () {
+  echo "$INF The config will be loaded from $STY${CONFIG}${ENC}. If you want to change the config, edit the file or remove it."
   set_source_folder
   set_shortcut_folder
 }
