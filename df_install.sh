@@ -23,11 +23,16 @@ usage () {
 ### This function write the config file
 #TODO Finish this function
 set_config_file () {
+  
+  # Delete the previous config
   rm df_install.config
-  echo "$ISS Where would you like to install the game? > "
+
+  # Ask for the path of the source folder
+  echo "$ISS Where would you like to install the game? (default: $(pwd)) > "
   response=
   read response
   if [ -z $response ];then
+    # If there is no path specified, the default one will the current folder
     echo "$WAR The path will be: \033[32m$(pwd)\033[0m"
     response="$(pwd)"
   fi
