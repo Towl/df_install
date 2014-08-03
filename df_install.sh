@@ -18,6 +18,25 @@ usage () {
   echo "-h --help hello world !"
 }
 
+### This function write the config file
+#TODO Finish this function
+set_config_file () {
+
+}
+
+### This function return the shortcut folder path from the config file (or ask for it)
+#TODO Finish this function 
+get_source_folder () {
+
+}
+
+### This function return the shortcut folder path from the config file (or ask for it)
+#TODO Finish this function
+get_shortcut_folder () {
+
+}
+
+
 ### This function get and return the latest version of Dwarf Fortress
 get_latest_version () {
   
@@ -35,6 +54,7 @@ get_latest_version () {
   echo $result
 }
 
+### Main script begin here
 echo "\033[32m[START]\033[0m"
 
 rawVersion=get_latest_version
@@ -103,4 +123,5 @@ ln -s /usr/lib/i386-linux-gnu/libopenal.so.1 ./${newDir}/df_linux/libs/libopenal
 ln -s /usr/lib/i386-linux-gnu/libsndfile.so.1 ./${newDir}/df_linux/libs/libsndfile.so
 
 echo "\033[32m[SUCCESS]\033[0m"
+### The end
 
