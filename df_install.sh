@@ -38,7 +38,7 @@ set_config_file () {
   echo "SRCFOLDER:${response}" > $CONFIG
 
   # Set the source folder variable to this instance
-  SRCFOLDER=$response
+  SRCFOLDER="$response"
 
   # Ask for the shortcut
   #echo "$ISS Would you like to create a shortcut? (y/n) > "
@@ -54,7 +54,7 @@ set_source_folder () {
   echo "$INF Get the source folder path in the config."
   if [ -f $CONFIG ];then
     srcfolder_line=$(cat $CONFIG | grep "SRCFOLDER")
-    SRCFOLDER=${srcfolder_line%:*}
+    SRCFOLDER="${srcfolder_line#*:}"
   else
     set_config_file
   fi
@@ -95,7 +95,7 @@ echo "\033[32m[START]\033[0m"
 
 init
 
-rawVersion=get_latest_version
+rawVersion=$(get_latest_version)
 
 echo "$INF The latest version is $STY${rawVersion}$ENC"
 
@@ -104,7 +104,7 @@ echo "$INF Go to source folder: $STY${SRCFOLDER}$ENC"
 #Go to the source fodlder
 cd "$SRCFOLDER"
   
-echo "$INF Refactor version string: $STY${1}$ENC"
+echo "$INF Refactor version string: $STY${rawVersion}$ENC"
 #Replace '.' by '_' to match the url expression
 version=$( echo ${rawVersion} | tr '.' '_')
 
