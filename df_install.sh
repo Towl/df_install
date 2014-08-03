@@ -2,6 +2,7 @@
 ################
 #TODO Set a config file to put this variables in
 SRCFOLDER=~/Jeux/src/df
+SHCFOLDER=~/Jeux
 TMPARCHIVE="archive_temp"
 CFOLDER=current
 INF="\033[34m[INFO]:\033[0m"
@@ -9,6 +10,13 @@ ERR="\033[31m[ERROR]:\033[0m"
 STY="\033[33m"
 ENC="\033[0m"
 ################
+
+### This function display the usage description of this script
+#TODO Finish this function
+usage () {
+  
+  echo "-h --help hello world !"
+}
 
 ### This function get and return the latest version of Dwarf Fortress
 get_latest_version () {
