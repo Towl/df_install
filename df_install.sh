@@ -24,9 +24,6 @@ usage () {
 #TODO Add the shorcut creation part
 set_config_file () {
   
-  # Delete the previous config
-  rm $CONFIG
-
   # Ask for the path of the source folder
   echo "$ISS Where would you like to install the game? (default: $(pwd)) > "
   response=
