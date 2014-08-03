@@ -67,7 +67,7 @@ set_source_folder () {
 ### This function return the shortcut folder path from the config file (or ask for it)
 #TODO Finish this function
 set_shortcut_folder () {
-
+  echo "$INF The shortcut function is not ready yet."
 }
 
 
