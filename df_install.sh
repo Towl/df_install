@@ -88,8 +88,15 @@ get_latest_version () {
   echo $result
 }
 
+init () {
+  set_source_folder
+  set_shortcut_folder
+}
+
 ### Main script begin here
 echo "\033[32m[START]\033[0m"
+
+init
 
 rawVersion=get_latest_version
 
