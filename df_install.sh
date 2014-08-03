@@ -1,11 +1,13 @@
 # !/bin/bash
 ################
+CONFIG=df_install.config
+SRCFOLDER=.
 #TODO Set a config file to put this variables in
 TMPARCHIVE="archive_temp"
 CFOLDER=current
 INF="\033[34m[INFO]:\033[0m"
 ERR="\033[31m[ERROR]:\033[0m"
-WAR="\033[32m[WARN]:\033[0m"
+WAR="\033[33m[WARN]:\033[0m"
 ISS="\033[36m[ISSUE]:\033[0m"
 STY="\033[33m"
 ENC="\033[0m"
@@ -23,7 +25,7 @@ usage () {
 set_config_file () {
   
   # Delete the previous config
-  rm df_install.config
+  rm $CONFIG
 
   # Ask for the path of the source folder
   echo "$ISS Where would you like to install the game? (default: $(pwd)) > "
@@ -36,7 +38,10 @@ set_config_file () {
   fi
   
   # Write the new source folder path in the config (and create the config file)
-  echo "SRCFOLDER:${response}" > df_install.config
+  echo "SRCFOLDER:${response}" > $CONFIG
+
+  # Set the source folder variable to this instance
+  SRCFOLDER=$response
 
   # Ask for the shortcut
   #echo "$ISS Would you like to create a shortcut? (y/n) > "
@@ -48,13 +53,20 @@ set_config_file () {
 
 ### This function return the shortcut folder path from the config file (or ask for it)
 #TODO Finish this function 
-get_source_folder () {
-  
+set_source_folder () {
+  echo "$INF Get the source folder path in the config."
+  if [ -f $CONFIG ];then
+    srcfolder_line=$(cat $CONFIG | grep "SRCFOLDER")
+    SRCFOLDER=${srcfolder_line%:*}
+  else
+    set_config_file
+  fi
+  echo "$INF The game will be installed to the path: $STY${SRCFOLDER}$ENC"
 }
 
 ### This function return the shortcut folder path from the config file (or ask for it)
 #TODO Finish this function
-get_shortcut_folder () {
+set_shortcut_folder () {
 
 }
 
