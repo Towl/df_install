@@ -7,6 +7,8 @@ TMPARCHIVE="archive_temp"
 CFOLDER=current
 INF="\033[34m[INFO]:\033[0m"
 ERR="\033[31m[ERROR]:\033[0m"
+WAR="\033[32m[WARN]:\033[0m"
+ISS="\033[36m[ISSUE]:\033[0m"
 STY="\033[33m"
 ENC="\033[0m"
 ################
@@ -21,7 +23,15 @@ usage () {
 ### This function write the config file
 #TODO Finish this function
 set_config_file () {
-
+  rm df_install.config
+  echo "$ISS Where would you like to install the game? > "
+  response=
+  read response
+  if [ -z $response ];then
+    echo "$WAR The path will be: \033[32m$(pwd)\033[0m"
+    response="$(pwd)"
+  fi
+  echo "SRCFOLDER:${response}" > df_install.config
 }
 
 ### This function return the shortcut folder path from the config file (or ask for it)
