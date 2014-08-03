@@ -11,22 +11,25 @@ ENC="\033[0m"
 ################
 
 ### This function get and return the latest version of Dwarf Fortress
-#TODO Create the function syntax and use it
 get_latest_version () {
+  
   # Get the content of the rss feed of the release canal and search for the
   #line which contains the latest version
   rssLatestRelease=$(curl http://www.bay12games.com/dwarves/dev_release.rss | sed -n '/DF [0-9]./p')
+  
   # Remove the part of the string before the version
   removePrefix=${rssLatestRelease#*DF [0-9]*.}
+  
   # Remove the part of the string after the version
   result=${removePrefix% R*}
+  
   # Return the version
   echo $result
 }
 
 echo "\033[32m[START]\033[0m"
 
-rawVersion=$result
+rawVersion=get_latest_version
 
 echo "$INF The latest version is $STY${rawVersion}$ENC"
 
