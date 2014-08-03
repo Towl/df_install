@@ -71,7 +71,7 @@ get_latest_version () {
   
   # Get the content of the rss feed of the release canal and search for the
   #line which contains the latest version
-  rssLatestRelease=$(curl http://www.bay12games.com/dwarves/dev_release.rss | sed -n '/DF [0-9]./p')
+  rssLatestRelease=$(curl -s http://www.bay12games.com/dwarves/dev_release.rss | sed -n '/DF [0-9]./p')
   
   # Remove the part of the string before the version
   removePrefix=${rssLatestRelease#*DF [0-9]*.}
