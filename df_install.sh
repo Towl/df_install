@@ -1,8 +1,6 @@
 # !/bin/bash
 ################
 #TODO Set a config file to put this variables in
-SRCFOLDER=~/Jeux/src/df
-SHCFOLDER=~/Jeux
 TMPARCHIVE="archive_temp"
 CFOLDER=current
 INF="\033[34m[INFO]:\033[0m"
@@ -21,7 +19,7 @@ usage () {
 }
 
 ### This function write the config file
-#TODO Finish this function
+#TODO Add the shorcut creation part
 set_config_file () {
   
   # Delete the previous config
@@ -36,13 +34,22 @@ set_config_file () {
     echo "$WAR The path will be: \033[32m$(pwd)\033[0m"
     response="$(pwd)"
   fi
+  
+  # Write the new source folder path in the config (and create the config file)
   echo "SRCFOLDER:${response}" > df_install.config
+
+  # Ask for the shortcut
+  #echo "$ISS Would you like to create a shortcut? (y/n) > "
+  #read response
+  #if [ "$response" == "y"  ];then
+    
+  #fi
 }
 
 ### This function return the shortcut folder path from the config file (or ask for it)
 #TODO Finish this function 
 get_source_folder () {
-
+  
 }
 
 ### This function return the shortcut folder path from the config file (or ask for it)
